@@ -1,16 +1,154 @@
 @import 'tailwindcss';
 
 :root {
+  /* Theme Colors (Dark Portfolio Setup) */
   --background: #0a0a0a;
   --foreground: #ffffff;
+  --radius: 0.625rem;
+  --primary: #ffffff;
+  --primary-foreground: #0a0a0a;
+  --secondary: #171717;
+  --secondary-foreground: #a3a3a3;
+  --border: #262626;
+  --ring: #525252;
+
+  /* Typography Font Sizes (Fluid with clamp: Mobile ≤512px -> Tablet 768px -> Desktop ≥1024px) */
+  --font-h-one: clamp(1.5rem, 1rem + 1.5625vw, 2rem); /* 24px -> 28px -> 32px */
+  --font-h-two: clamp(1.25rem, 1rem + 0.78125vw, 1.5rem); /* 20px -> 22px -> 24px */
+  --font-h-three: clamp(1.125rem, 1rem + 0.390625vw, 1.25rem); /* 18px -> 19px -> 20px */
+  --font-h-four: clamp(0.8125rem, 0.625rem + 0.5859375vw, 1rem); /* 13px -> 14.5px -> 16px */
+  --font-body-large: clamp(0.8125rem, 0.625rem + 0.5859375vw, 1rem); /* 13px -> 14.5px -> 16px */
+  --font-body-medium: clamp(0.75rem, 0.625rem + 0.390625vw, 0.875rem); /* 12px -> 13px -> 14px */
+  --font-body-small: clamp(0.6875rem, 0.625rem + 0.1953125vw, 0.75rem); /* 11px -> 11.5px -> 12px */
+  --font-cta-1: clamp(0.8125rem, 0.625rem + 0.5859375vw, 1rem); /* 13px -> 14.5px -> 16px */
+  --font-cta-2: clamp(0.75rem, 0.625rem + 0.390625vw, 0.875rem); /* 12px -> 13px -> 14px */
+  --font-caption: clamp(0.6875rem, 0.625rem + 0.1953125vw, 0.75rem); /* 11px -> 11.5px -> 12px */
+  --font-labels: clamp(0.75rem, 0.625rem + 0.390625vw, 0.875rem); /* 12px -> 13px -> 14px */
+  --font-tags: clamp(0.5625rem, 0.5rem + 0.1953125vw, 0.625rem); /* 9px -> 9.5px -> 10px */
+
+  /* Typography Line Heights (Fluid with clamp: Mobile ≤512px -> Tablet 768px -> Desktop ≥1024px) */
+  --line-h-one: clamp(2rem, 1.5rem + 1.5625vw, 2.5rem); /* 32px -> 36px -> 40px */
+  --line-h-two: clamp(1.75rem, 1.5rem + 0.78125vw, 2rem); /* 28px -> 30px -> 32px */
+  --line-h-three: clamp(1.5rem, 1.25rem + 0.78125vw, 1.75rem); /* 24px -> 26px -> 28px */
+  --line-h-four: clamp(1.125rem, 0.75rem + 1.171875vw, 1.5rem); /* 18px -> 21px -> 24px */
+  --line-body-large: clamp(1.125rem, 0.75rem + 1.171875vw, 1.5rem); /* 18px -> 21px -> 24px */
+  --line-body-medium: clamp(1rem, 0.75rem + 0.78125vw, 1.25rem); /* 16px -> 18px -> 20px */
+  --line-body-small: clamp(0.875rem, 0.75rem + 0.390625vw, 1rem); /* 14px -> 15px -> 16px */
+  --line-cta-1: clamp(1.125rem, 1rem + 0.390625vw, 1.25rem); /* 18px -> 19px -> 20px */
+  --line-cta-2: clamp(1rem, 0.75rem + 0.78125vw, 1.25rem); /* 16px -> 18px -> 20px */
+  --line-caption: clamp(0.875rem, 0.75rem + 0.390625vw, 1rem); /* 14px -> 15px -> 16px */
+  --line-labels: clamp(1rem, 0.75rem + 0.78125vw, 1.25rem); /* 16px -> 18px -> 20px */
+  --line-tags: clamp(0.6875rem, 0.625rem + 0.1953125vw, 0.75rem); /* 11px -> 11.5px -> 12px */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  /* Project Font System (Clash Display from src/lib/fonts.ts) */
+  --font-clash: var(--font-clash-display);
+  --font-sans: var(--font-clash-display);
+
+  /* Border Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Typography Utility Tokens (e.g. text-h-one) + Paired Line Heights */
+  --text-h-one: var(--font-h-one);
+  --text-h-one--line-height: var(--line-h-one);
+  --text-h-two: var(--font-h-two);
+  --text-h-two--line-height: var(--line-h-two);
+  --text-h-three: var(--font-h-three);
+  --text-h-three--line-height: var(--line-h-three);
+  --text-h-four: var(--font-h-four);
+  --text-h-four--line-height: var(--line-h-four);
+  --text-body-large: var(--font-body-large);
+  --text-body-large--line-height: var(--line-body-large);
+  --text-body-medium: var(--font-body-medium);
+  --text-body-medium--line-height: var(--line-body-medium);
+  --text-body-small: var(--font-body-small);
+  --text-body-small--line-height: var(--line-body-small);
+  --text-cta-1: var(--font-cta-1);
+  --text-cta-1--line-height: var(--line-cta-1);
+  --text-cta-2: var(--font-cta-2);
+  --text-cta-2--line-height: var(--line-cta-2);
+  --text-caption: var(--font-caption);
+  --text-caption--line-height: var(--line-caption);
+  --text-labels: var(--font-labels);
+  --text-labels--line-height: var(--line-labels);
+  --text-tags: var(--font-tags);
+  --text-tags--line-height: var(--line-tags);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+/* ---------------- TYPOGRAPHY SYSTEM ---------------- */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background font-clash text-foreground;
+  }
+
+  .h-one {
+    font-size: var(--font-h-one);
+    line-height: var(--line-h-one);
+  }
+  .h-two {
+    font-size: var(--font-h-two);
+    line-height: var(--line-h-two);
+  }
+  .h-three {
+    font-size: var(--font-h-three);
+    line-height: var(--line-h-three);
+  }
+  .h-four {
+    font-size: var(--font-h-four);
+    line-height: var(--line-h-four);
+  }
+
+  p,
+  .body-large {
+    font-size: var(--font-body-large);
+    line-height: var(--line-body-large);
+  }
+  .body-medium {
+    font-size: var(--font-body-medium);
+    line-height: var(--line-body-medium);
+  }
+  .body-small {
+    font-size: var(--font-body-small);
+    line-height: var(--line-body-small);
+  }
+
+  .cta-1 {
+    font-size: var(--font-cta-1);
+    line-height: var(--line-cta-1);
+  }
+  .cta-2 {
+    font-size: var(--font-cta-2);
+    line-height: var(--line-cta-2);
+  }
+
+  .caption {
+    font-size: var(--font-caption);
+    line-height: var(--line-caption);
+  }
+  .labels {
+    font-size: var(--font-labels);
+    line-height: var(--line-labels);
+  }
+  .tags {
+    font-size: var(--font-tags);
+    line-height: var(--line-tags);
+  }
 }
